@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLay"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="250dp"
         app:layout_constraintTop_toTopOf="parent">
         <!--Img-->
         <com.flaviofaria.kenburnsview.KenBurnsView

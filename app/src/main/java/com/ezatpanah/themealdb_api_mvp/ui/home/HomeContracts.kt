@@ -18,7 +18,7 @@ interface HomeContracts {
         fun callFoodRandom()
         fun callCategoriesList()
         fun callFoodsList(letter: String)
-        fun callSearchFood(letter: String)
-        fun callFoodsByCategory(letter: String)
+//        fun callSearchFood(letter: String)
+//        fun callFoodsByCategory(letter: String)
     }
 }
