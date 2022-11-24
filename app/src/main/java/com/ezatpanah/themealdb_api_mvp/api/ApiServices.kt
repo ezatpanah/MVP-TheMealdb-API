@@ -22,11 +22,13 @@ interface ApiServices {
 
     Search meal by name
     www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
+
     List all meals by first letter
     www.themealdb.com/api/json/v1/1/search.php?f=a
-    Lookup full meal details by id
-    www.themealdb.com/api/json/v1/1/lookup.php?i=52772
 
+
+     Filter by Category
+     www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
 
     **/
 
@@ -37,7 +39,11 @@ interface ApiServices {
     fun getCategoriesList() : Single<Response<CategoriesListResponse>>
 
     @GET("search.php")
-    fun getCFoodList(@Query("f") latter : String) : Single<Response<FoodsListResponse>>
+    fun getFoodList(@Query("f") latter : String) : Single<Response<FoodsListResponse>>
 
+    @GET("search.php")
+    fun searchList(@Query("s") latter : String) : Single<Response<FoodsListResponse>>
 
+    @GET("filter.php")
+    fun filterList(@Query("c") latter : String) : Single<Response<FoodsListResponse>>
 }

@@ -61,7 +61,7 @@ class HomeFragment : Fragment(), HomeContracts.View {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     if (it.toString().length > 1) {
-                        //call api
+                        presenter.callSearchFood(it.toString())
                     }
                 }
 
@@ -78,9 +78,8 @@ class HomeFragment : Fragment(), HomeContracts.View {
         binding.filterSpinner.adapter = adapter
         binding.filterSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                //Call api
+                presenter.callFoodsList(filters[p2].toString())
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
     }
@@ -93,11 +92,12 @@ class HomeFragment : Fragment(), HomeContracts.View {
 
     override fun loadCategories(data: CategoriesListResponse) {
         categoriesAdapter.setData(data.categories)
-        binding.apply {
-            categoryList.apply {
+        binding.categoryList.apply {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = categoriesAdapter
-            }
+        }
+        categoriesAdapter.setOnItemClickListener {
+            presenter.callFoodsByCategory(it.strCategory.toString())
         }
     }
 

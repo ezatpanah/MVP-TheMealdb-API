@@ -101,4 +101,66 @@ class HomePresenter @Inject constructor(
         }
     }
 
+    override fun callSearchFood(letter: String) {
+        if (view.checkInternet()) {
+            view.foodsLoadingState(true)
+            disposable = repository.getSearchList(letter)
+                .applyIoScheduler()
+                .subscribe({ response ->
+                    view.foodsLoadingState(false)
+                    when (response.code()) {
+                        in 200..202 -> {
+                            response.body()?.let {
+                                if (it.meals!!.isNotEmpty()) {
+                                    view.loadFoodsList(it)
+                                }
+                            }
+                        }
+                        in 400..499 -> {
+                            view.serverError("${response.code()}")
+                        }
+                        in 500..599 -> {
+                            view.serverError("${response.code()}")
+                        }
+                    }
+                }, { error ->
+                    view.serverError(error.message.toString())
+                    view.foodsLoadingState(false)
+                })
+        } else {
+            view.internetError(false)
+        }
+    }
+
+    override fun callFoodsByCategory(letter: String) {
+        if (view.checkInternet()) {
+            view.foodsLoadingState(true)
+            disposable = repository.getFilterList(letter)
+                .applyIoScheduler()
+                .subscribe({ response ->
+                    view.foodsLoadingState(false)
+                    when (response.code()) {
+                        in 200..202 -> {
+                            response.body()?.let {
+                                if (it.meals!!.isNotEmpty()) {
+                                    view.loadFoodsList(it)
+                                }
+                            }
+                        }
+                        in 400..499 -> {
+                            view.serverError("${response.code()}")
+                        }
+                        in 500..599 -> {
+                            view.serverError("${response.code()}")
+                        }
+                    }
+                }, { error ->
+                    view.serverError(error.message.toString())
+                    view.foodsLoadingState(false)
+                })
+        } else {
+            view.internetError(false)
+        }
+    }
+
 }
