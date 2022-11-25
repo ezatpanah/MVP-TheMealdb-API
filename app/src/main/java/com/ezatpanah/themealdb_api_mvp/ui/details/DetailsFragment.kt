@@ -15,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.ezatpanah.themealdb_api_mvp.R
 import com.ezatpanah.themealdb_api_mvp.databinding.FragmentDetailsBinding
+import com.ezatpanah.themealdb_api_mvp.db.FoodEntity
 import com.ezatpanah.themealdb_api_mvp.response.FoodsListResponse
 import com.ezatpanah.themealdb_api_mvp.ui.details.player.PlayerActivity
 import com.ezatpanah.themealdb_api_mvp.utils.Constant.VIDEO_ID
@@ -36,8 +37,8 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
     @Inject
     lateinit var presenter: DetailsPresenter
 
-//    @Inject
-//    lateinit var entity: FoodEntity
+    @Inject
+    lateinit var entity: FoodEntity
 
     //Other
     private val args: DetailsFragmentArgs by navArgs()
@@ -73,10 +74,10 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
             //Set Data
             data.meals?.get(0)?.let { itMeal ->
                 //Favorite
-/*                entity.id = itMeal.idMeal.toString().toInt()
+                entity.id = itMeal.idMeal.toString().toInt()
                 entity.title = itMeal.strMeal.toString()
                 entity.img = itMeal.strMealThumb.toString()
-                presenter.checkFavorite(itMeal.idMeal.toString().toInt())*/
+                presenter.checkFavorite(itMeal.idMeal.toString().toInt())
                 //Get data
                 foodCoverImg.load(itMeal.strMealThumb) {
                     crossfade(true)
@@ -130,7 +131,7 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
         }
     }
 
-/*    override fun updateFavorite(isAdded: Boolean) {
+    override fun updateFavorite(isAdded: Boolean) {
         binding.apply {
             //Click
             detailFav.setOnClickListener {
@@ -147,7 +148,7 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
                 detailFav.setColorFilter(ContextCompat.getColor(requireContext(), R.color.black))
             }
         }
-    }*/
+    }
 
     override fun showLoading() {
         binding.detailLoading.visibility = View.VISIBLE

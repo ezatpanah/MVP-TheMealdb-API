@@ -19,8 +19,19 @@
         android:name="com.ezatpanah.themealdb_api_mvp.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
     </fragment>
+
+    <action
+        android:id="@+id/actionHomeToDetail"
+        app:destination="@id/detailsFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <fragment
+        android:id="@+id/favoritesFragment2"
+        android:name="com.ezatpanah.themealdb_api_mvp.ui.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+
 </navigation>
