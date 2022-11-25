@@ -6,20 +6,16 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class FavoritesPresenter
-@Inject constructor(
-    private val repository: DbRepository,
-    val view: FavoritesContracts.View
-) : FavoritesContracts.Presenter, BasePresenterImpl() {
+class FavoritesPresenter @Inject constructor(private val repository: DbRepository, val view: FavoritesContracts.View) :
+    BasePresenterImpl(), FavoritesContracts.Presenter {
 
-    override fun getAllFood() {
-        disposable = repository
-            .loadAllFoods()
+    override fun loadAllFood() {
+        disposable = repository.loadAllFoods()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 if (it.isNotEmpty()) {
-                    view.loadAllFoods(it)
+                    view.showAllFoods(it)
                 } else {
                     //Empty
                 }

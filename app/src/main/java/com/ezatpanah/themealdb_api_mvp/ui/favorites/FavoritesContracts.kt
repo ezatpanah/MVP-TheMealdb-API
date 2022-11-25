@@ -5,10 +5,10 @@ import com.ezatpanah.themealdb_api_mvp.ui.base.BasePresenter
 
 interface FavoritesContracts {
     interface View {
-        fun loadAllFoods(list: MutableList<FoodEntity>)
+        fun showAllFoods(list: MutableList<FoodEntity>)
     }
 
     interface Presenter : BasePresenter {
-        fun getAllFood()
+        fun loadAllFood()
     }
 }

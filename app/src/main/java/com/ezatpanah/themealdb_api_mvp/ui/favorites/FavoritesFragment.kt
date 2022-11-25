@@ -12,10 +12,9 @@ import com.ezatpanah.themealdb_api_mvp.adapter.FavoriteAdapter
 import com.ezatpanah.themealdb_api_mvp.databinding.FragmentFavoritesBinding
 import com.ezatpanah.themealdb_api_mvp.db.FoodEntity
 import com.ezatpanah.themealdb_api_mvp.ui.home.HomeFragmentDirections
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
+
 class FavoritesFragment : Fragment() ,FavoritesContracts.View {
     //Binding
     private lateinit var binding: FragmentFavoritesBinding
@@ -34,10 +33,10 @@ class FavoritesFragment : Fragment() ,FavoritesContracts.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Load data from database
-        presenter.getAllFood()
+        presenter.loadAllFood()
     }
 
-    override fun loadAllFoods(list: MutableList<FoodEntity>) {
+    override fun showAllFoods(list: MutableList<FoodEntity>) {
         favoriteAdapter.setData(list)
 
         binding.favoriteList.apply {
