@@ -9,13 +9,13 @@ import javax.inject.Inject
 class FavoritesPresenter @Inject constructor(private val repository: DbRepository, val view: FavoritesContracts.View) :
     BasePresenterImpl(), FavoritesContracts.Presenter {
 
-    override fun loadAllFood() {
+    override fun callFoodList() {
         disposable = repository.loadAllFoods()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 if (it.isNotEmpty()) {
-                    view.showAllFoods(it)
+                    view.loadFoodsList(it)
                 } else {
                     //Empty
                 }
