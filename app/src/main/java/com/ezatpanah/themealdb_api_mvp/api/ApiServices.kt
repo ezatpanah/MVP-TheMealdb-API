@@ -12,7 +12,7 @@ interface ApiServices {
     //https://www.themealdb.com/api.php
     /**
 
-     Header
+    Header
     Lookup a single random meal
     www.themealdb.com/api/json/v1/1/random.php
 
@@ -26,9 +26,11 @@ interface ApiServices {
     List all meals by first letter
     www.themealdb.com/api/json/v1/1/search.php?f=a
 
-
      Filter by Category
      www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
+
+     Lookup full meal details by id
+     www.themealdb.com/api/json/v1/1/lookup.php?i=52772
 
     **/
 
@@ -46,4 +48,7 @@ interface ApiServices {
 
     @GET("filter.php")
     fun filterList(@Query("c") latter : String) : Single<Response<FoodsListResponse>>
+
+    @GET("lookup.php")
+    fun getFoodDetails(@Query("i") id : Int) : Single<Response<FoodsListResponse>>
 }

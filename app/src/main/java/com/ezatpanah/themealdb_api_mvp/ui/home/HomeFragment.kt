@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.ezatpanah.themealdb_api_mvp.R
@@ -20,7 +21,9 @@ import com.ezatpanah.themealdb_api_mvp.response.FoodsListResponse
 import com.ezatpanah.themealdb_api_mvp.utils.isNetworkAvailable
 import com.jakewharton.rxbinding4.widget.textChanges
 import dagger.hilt.android.AndroidEntryPoint
+import greyfox.rxnetwork.RxNetwork
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -68,6 +71,11 @@ class HomeFragment : Fragment(), HomeContracts.View {
             //Filter Food
             filterFood()
 
+            //CheckInternet
+            RxNetwork.init(requireContext()).observe()
+                .subscribeOn(Schedulers.io())
+                .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
+                .subscribe { internetError(it.isConnected) }
         }
     }
 
@@ -109,6 +117,10 @@ class HomeFragment : Fragment(), HomeContracts.View {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = foodsAdapter
         }
+        foodsAdapter.setOnItemClickListener {
+            val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it.idMeal!!.toInt())
+            findNavController().navigate(direction)
+        }
     }
 
     override fun foodsLoadingState(isShown: Boolean) {
@@ -120,7 +132,6 @@ class HomeFragment : Fragment(), HomeContracts.View {
                 homeFoodsLoading.visibility = View.GONE
                 foodsList.visibility = View.VISIBLE
             }
-
         }
     }
 
@@ -128,7 +139,6 @@ class HomeFragment : Fragment(), HomeContracts.View {
         binding.apply {
             foodsList.visibility = View.GONE
             homeDisLay.visibility = View.VISIBLE
-            //Change view
             disconnectLay.disImg.setImageResource(R.drawable.box)
             disconnectLay.disTxt.text = getString(R.string.emptyList)
         }
@@ -148,7 +158,22 @@ class HomeFragment : Fragment(), HomeContracts.View {
         return requireContext().isNetworkAvailable()
     }
 
-    override fun internetError(hasInternet: Boolean) {}
+    override fun internetError(hasInternet: Boolean) {
+        binding.apply {
+            if (!hasInternet) {
+                homeContent.visibility = View.GONE
+                homeDisLay.visibility = View.VISIBLE
+                disconnectLay.disImg.setImageResource(R.drawable.disconnect)
+                disconnectLay.disTxt.text = getString(R.string.checkInternet)
+            } else {
+                homeContent.visibility = View.VISIBLE
+                homeDisLay.visibility = View.GONE
+                presenter.callCategoriesList()
+                presenter.callFoodsList("a")
+            }
+        }
+
+    }
 
     override fun serverError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
