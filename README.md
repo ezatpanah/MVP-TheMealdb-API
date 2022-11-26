@@ -8,8 +8,6 @@ The app was written in Kotlin.
 
 The API’s Docs: https://themealdb.com/api.php
 
-<br>
-<br>
 Technologies and Libraries Used :
 
 - MVP
@@ -22,6 +20,7 @@ Technologies and Libraries Used :
 - Coil
 - Youtube API
 - Lottie
+
 
 Screen-Shot :
 <br>
