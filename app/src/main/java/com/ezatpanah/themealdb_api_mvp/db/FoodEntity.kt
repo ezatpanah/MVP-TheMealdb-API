@@ -9,5 +9,7 @@ data class FoodEntity(
     @PrimaryKey
     var id: Int = 0,
     var title: String = "",
-    var img: String = ""
+    var img: String = "",
+    var cat: String = "",
+    var area: String = "",
 )

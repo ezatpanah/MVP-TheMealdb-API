@@ -37,11 +37,9 @@ class FavoriteAdapter @Inject constructor() : RecyclerView.Adapter<FavoriteAdapt
                     crossfade(100)
                 }
                 itemFoodsTitle.text = item.title
-
-                itemFoodsCategory.visibility = View.GONE
-                itemFoodsArea.visibility = View.GONE
+                itemFoodsCategory.text = item.cat
+                itemFoodsArea.text = item.area
                 itemFoodsCount.visibility = View.GONE
-                //Click
                 root.setOnClickListener { onItemClickListener?.let { it(item) } }
             }
         }

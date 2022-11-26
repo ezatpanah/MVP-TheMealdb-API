@@ -122,15 +122,12 @@
             android:id="@+id/itemFoodsImg"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
             android:background="@color/darkSlategray"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/CircleRoundedImageView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.cardview.widget.CardView>
 

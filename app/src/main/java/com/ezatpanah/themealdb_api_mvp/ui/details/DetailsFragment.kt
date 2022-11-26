@@ -51,34 +51,31 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Get food id
         foodId = args.foodId
         if (foodId > 0) {
             //Call api
             presenter.callDetailApi(foodId)
         }
-        //Check internet
         RxNetwork.init(requireContext()).observe()
             .subscribeOn(Schedulers.io())
             .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
             .subscribe {
                 internetError(it.isConnected)
             }
-        //Back
         binding.detailBack.setOnClickListener { findNavController().popBackStack() }
     }
 
     override fun loadDetail(data: FoodsListResponse) {
-        //InitViews
         binding.apply {
-            //Set Data
             data.meals?.get(0)?.let { itMeal ->
-                //Favorite
+
                 entity.id = itMeal.idMeal.toString().toInt()
                 entity.title = itMeal.strMeal.toString()
                 entity.img = itMeal.strMealThumb.toString()
+                entity.cat = itMeal.strCategory.toString()
+                entity.area = itMeal.strArea.toString()
+
                 presenter.checkFavorite(itMeal.idMeal.toString().toInt())
-                //Get data
                 foodCoverImg.load(itMeal.strMealThumb) {
                     crossfade(true)
                     crossfade(500)
@@ -87,7 +84,6 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
                 foodAreaTxt.text = itMeal.strArea
                 foodTitleTxt.text = itMeal.strMeal
                 foodDescTxt.text = itMeal.strInstructions
-                //Play
                 if (itMeal.strYoutube != null) {
                     foodPlayImg.visibility = View.VISIBLE
                     foodPlayImg.setOnClickListener {
@@ -100,7 +96,6 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
                 } else {
                     foodPlayImg.visibility = View.GONE
                 }
-                //Source
                 if (itMeal.strSource != null) {
                     foodSourceImg.visibility = View.VISIBLE
                     foodSourceImg.setOnClickListener {
@@ -110,18 +105,15 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
                     foodSourceImg.visibility = View.GONE
                 }
             }
-            //Json Array
             val jsonData = JSONObject(Gson().toJson(data))
             val meals = jsonData.getJSONArray("meals")
             val meal = meals.getJSONObject(0)
-            //Ingredient
             for (i in 1..15) {
                 val ingredient = meal.getString("strIngredient$i")
                 if (ingredient.isNullOrEmpty().not()) {
                     ingredientsTxt.append("$ingredient\n")
                 }
             }
-            //Measure
             for (i in 1..15) {
                 val measure = meal.getString("strMeasure$i")
                 if (measure.isNullOrEmpty().not()) {
@@ -133,7 +125,6 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
 
     override fun updateFavorite(isAdded: Boolean) {
         binding.apply {
-            //Click
             detailFav.setOnClickListener {
                 if (isAdded) {
                     presenter.deleteFood(entity)
@@ -141,7 +132,6 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
                     presenter.saveFood(entity)
                 }
             }
-            //Change color
             if (isAdded) {
                 detailFav.setColorFilter(ContextCompat.getColor(requireContext(), R.color.tartOrange))
             } else {
@@ -169,7 +159,6 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
             if (!hasInternet) {
                 detailContentLay.visibility = View.GONE
                 homeDisLay.visibility = View.VISIBLE
-                //Change view
                 disconnectLay.imgDisconnect.setAnimation(R.raw.nointernet)
                 disconnectLay.imgDisconnect.playAnimation()
             } else {
