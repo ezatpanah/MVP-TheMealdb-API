@@ -17,13 +17,16 @@
             android:id="@+id/headerImg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <!--Cover-->
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.7"
-            android:background="@color/darkSlategray" />
+            android:background="#8A202D3D" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--Search - Filter-->
@@ -49,7 +52,8 @@
             android:popupBackground="@drawable/bg_circle_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
         <!--Search-->
         <EditText
             android:id="@+id/searchEdt"
@@ -101,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:clipToPadding="false"
-                    android:paddingHorizontal="25dp"
+                    android:paddingHorizontal="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -136,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
-                        android:text="foods"
+                        android:text="Foods List"
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -149,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:clipToPadding="false"
-                        android:paddingHorizontal="25dp"
+                        android:paddingHorizontal="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/foodsTitle" />

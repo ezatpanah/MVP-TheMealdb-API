@@ -17,7 +17,7 @@ class FavoritesPresenter @Inject constructor(private val repository: DbRepositor
                 if (it.isNotEmpty()) {
                     view.loadFoodsList(it)
                 } else {
-                    //Empty
+                        view.emptyList()
                 }
             }
     }

@@ -51,6 +51,15 @@ class FavoritesFragment : Fragment() ,FavoritesContracts.View {
         }
     }
 
+    override fun emptyList() {
+        binding.apply {
+            favoriteList.visibility = View.GONE
+            favEmptyLay.visibility = View.VISIBLE
+            emptyLay.imgDisconnect.setAnimation(R.raw.empty)
+            emptyLay.imgDisconnect.playAnimation()
+        }
+    }
+
     override fun onStop() {
         super.onStop()
         presenter.onStop()

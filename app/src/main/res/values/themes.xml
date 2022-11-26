@@ -40,10 +40,12 @@
         <item name="cornerSizeBottomRight">70dp</item>
     </style>
 
-    <style name="TopRoundedImageView">
+    <style name="CircleRoundedImageView">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">10dp</item>
-        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopRight">75dp</item>
+        <item name="cornerSizeTopLeft">75dp</item>
+        <item name="cornerSizeBottomRight">75dp</item>
+        <item name="cornerSizeBottomLeft">75dp</item>
     </style>
 
 </resources>

@@ -170,8 +170,8 @@ class DetailsFragment : Fragment() ,DetailsContracts.View{
                 detailContentLay.visibility = View.GONE
                 homeDisLay.visibility = View.VISIBLE
                 //Change view
-                disconnectLay.disImg.setImageResource(R.drawable.disconnect)
-                disconnectLay.disTxt.text = getString(R.string.checkInternet)
+                disconnectLay.imgDisconnect.setAnimation(R.raw.nointernet)
+                disconnectLay.imgDisconnect.playAnimation()
             } else {
                 detailContentLay.visibility = View.VISIBLE
                 homeDisLay.visibility = View.GONE

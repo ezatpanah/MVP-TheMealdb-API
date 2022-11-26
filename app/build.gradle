@@ -84,4 +84,7 @@ dependencies {
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'it.greyfox:rxnetwork:0.0.5'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
+
+    implementation "com.airbnb.android:lottie:3.4.0"
+
 }

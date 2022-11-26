@@ -22,9 +22,7 @@ class FavoriteAdapter @Inject constructor() : RecyclerView.Adapter<FavoriteAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //getItem from PagingDataAdapter
         holder.bind(moviesList[position])
-        //Not duplicate items
         holder.setIsRecyclable(false)
     }
 

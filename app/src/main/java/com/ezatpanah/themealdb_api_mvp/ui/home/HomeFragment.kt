@@ -111,6 +111,7 @@ class HomeFragment : Fragment(), HomeContracts.View {
 
     override fun loadFoodsList(data: FoodsListResponse) {
         data.meals?.let {
+            binding.homeDisLay.visibility = View.GONE
             foodsAdapter.setData(data.meals)
         }
         binding.foodsList.apply {
@@ -139,8 +140,8 @@ class HomeFragment : Fragment(), HomeContracts.View {
         binding.apply {
             foodsList.visibility = View.GONE
             homeDisLay.visibility = View.VISIBLE
-            disconnectLay.disImg.setImageResource(R.drawable.box)
-            disconnectLay.disTxt.text = getString(R.string.emptyList)
+            disconnectLay.imgDisconnect.setAnimation(R.raw.empty)
+            disconnectLay.imgDisconnect.playAnimation()
         }
     }
 
@@ -163,8 +164,8 @@ class HomeFragment : Fragment(), HomeContracts.View {
             if (!hasInternet) {
                 homeContent.visibility = View.GONE
                 homeDisLay.visibility = View.VISIBLE
-                disconnectLay.disImg.setImageResource(R.drawable.disconnect)
-                disconnectLay.disTxt.text = getString(R.string.checkInternet)
+                disconnectLay.imgDisconnect.setAnimation(R.raw.nointernet)
+                disconnectLay.imgDisconnect.playAnimation()
             } else {
                 homeContent.visibility = View.VISIBLE
                 homeDisLay.visibility = View.GONE
