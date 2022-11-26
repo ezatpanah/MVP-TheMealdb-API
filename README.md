@@ -11,6 +11,7 @@ The API’s Docs: https://themealdb.com/api.php
 <br>
 <br>
 Technologies and Libraries Used :
+
 - MVP
 - Navigation Component
 - View Binding
