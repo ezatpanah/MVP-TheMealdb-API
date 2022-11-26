@@ -3,10 +3,6 @@
 Overview :
 
 The purpose of this application is to use TheMealDB API . TheMealDB: An open, crowd-sourced database of Recipes from around the world.
-* cat
-* Star
-* Fork
-* Private or public
 
 The app was written in Kotlin.
 
@@ -15,16 +11,16 @@ The API’s Docs: https://themealdb.com/api.php
 <br>
 <br>
 Technologies and Libraries Used :
-* MVP
-* Navigation Component
-* View Binding
-* Retrofit
-* Dagger Hilt
-* RxJava
-* Room Database
-* Coil
-* Youtube API
-* Lottie
+*MVP
+*Navigation Component
+*View Binding
+*Retrofit
+*Dagger Hilt
+*RxJava
+*Room Database
+*Coil
+*Youtube API
+*Lottie
 
 Screen-Shot :
 <br>
