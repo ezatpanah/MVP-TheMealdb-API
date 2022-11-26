@@ -28,4 +28,4 @@ Technologies and Libraries Used :
 
 Screen-Shot :
 <br>
-<img alt="Ezatpanah TheMealdb-API-MVP" src="screenshot/Screenshot_1669502836.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshot/Screenshot_1669502840.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshot/Screenshot_1669502881.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshot/Screenshot_1669502891.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshot/Screenshot_1669502909.png" width="20%">
+<img alt="Ezatpanah TheMealdb-API-MVP" src="screenshots/Screenshot_1669502836.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshots/Screenshot_1669502840.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshots/Screenshot_1669502881.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshots/Screenshot_1669502891.png" width="20%"><img alt="Ezatpanah TheMealdb-API-MVP" src="screenshots/Screenshot_1669502909.png" width="20%">
