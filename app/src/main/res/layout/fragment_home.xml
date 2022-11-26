@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="@color/whiteSmoke"
     tools:context=".ui.home.HomeFragment">
-    <!--Header-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLay"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent">
-        <!--Img-->
+
         <com.flaviofaria.kenburnsview.KenBurnsView
             android:id="@+id/headerImg"
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <!--Cover-->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,7 +29,7 @@
             android:background="#8A202D3D" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--Search - Filter-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchFilterLay"
         android:layout_width="0dp"
@@ -77,7 +77,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--Content-->
+
     <ScrollView
         android:id="@+id/homeContent"
         android:layout_width="match_parent"
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--Category-->
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/homeCategoryLay"
                 android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-                <!--List-->
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoryList"
                     android:layout_width="0dp"
@@ -109,7 +109,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                <!--Loading-->
+
                 <ProgressBar
                     android:id="@+id/homeCategoryLoading"
                     android:layout_width="20dp"
@@ -120,7 +120,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <!--Foods-->
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/homeFoodsLay"
                 android:layout_width="match_parent"
@@ -129,12 +129,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/homeCategoryLay">
-                <!--Content-->
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/homeFoodsContent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <!--Title-->
+
                     <TextView
                         android:id="@+id/foodsTitle"
                         android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <!--List-->
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/foodsList"
                         android:layout_width="0dp"
@@ -159,7 +159,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/foodsTitle" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--Loading-->
+
                 <ProgressBar
                     android:id="@+id/homeFoodsLoading"
                     android:layout_width="20dp"
@@ -174,7 +174,7 @@
         </LinearLayout>
 
     </ScrollView>
-    <!--Disconnected-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/homeDisLay"
         android:layout_width="match_parent"
