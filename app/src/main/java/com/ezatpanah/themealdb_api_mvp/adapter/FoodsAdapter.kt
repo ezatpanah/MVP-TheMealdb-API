@@ -76,13 +76,13 @@ class FoodsAdapter @Inject constructor() : RecyclerView.Adapter<FoodsAdapter.Vie
     }
 
     fun setData(data: List<FoodsListResponse.Meal>) {
-        val moviesDiffUtil = MoviesDiffUtils(foodsList, data)
+        val moviesDiffUtil = FoodsDiffUtils(foodsList, data)
         val diffUtils = DiffUtil.calculateDiff(moviesDiffUtil)
         foodsList = data
         diffUtils.dispatchUpdatesTo(this)
     }
 
-    class MoviesDiffUtils(private val oldItem: List<FoodsListResponse.Meal>, private val newItem: List<FoodsListResponse.Meal>) : DiffUtil.Callback() {
+    class FoodsDiffUtils(private val oldItem: List<FoodsListResponse.Meal>, private val newItem: List<FoodsListResponse.Meal>) : DiffUtil.Callback() {
         override fun getOldListSize(): Int {
             return oldItem.size
         }
