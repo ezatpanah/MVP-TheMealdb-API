@@ -14,7 +14,7 @@ import javax.inject.Inject
 class FoodsAdapter @Inject constructor() : RecyclerView.Adapter<FoodsAdapter.ViewHolder>() {
 
     private lateinit var binding: ItemFoodsBinding
-    private var moviesList = emptyList<FoodsListResponse.Meal>()
+    private var foodsList = emptyList<FoodsListResponse.Meal>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = ItemFoodsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,12 +23,12 @@ class FoodsAdapter @Inject constructor() : RecyclerView.Adapter<FoodsAdapter.Vie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //getItem from PagingDataAdapter
-        holder.bind(moviesList[position])
+        holder.bind(foodsList[position])
         //Not duplicate items
         holder.setIsRecyclable(false)
     }
 
-    override fun getItemCount() = moviesList.size
+    override fun getItemCount() = foodsList.size
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
@@ -76,9 +76,9 @@ class FoodsAdapter @Inject constructor() : RecyclerView.Adapter<FoodsAdapter.Vie
     }
 
     fun setData(data: List<FoodsListResponse.Meal>) {
-        val moviesDiffUtil = MoviesDiffUtils(moviesList, data)
+        val moviesDiffUtil = MoviesDiffUtils(foodsList, data)
         val diffUtils = DiffUtil.calculateDiff(moviesDiffUtil)
-        moviesList = data
+        foodsList = data
         diffUtils.dispatchUpdatesTo(this)
     }
 
