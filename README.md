@@ -10,8 +10,6 @@ This project in
 - MVVM architecture : https://github.com/ezatpanah/MVVM-TheMealdb-API [ Room Database - Dagger Hilt - Flow - Coroutine - LiveData]
 - MVI architecture : Coming soon
 
-The purpose of this application is to use TheMealDB API . TheMealDB: An open, crowd-sourced database of Recipes from around the world.
-
 The app was written in Kotlin.
 
 TheMealDB API: An open, crowd-sourced database of Recipes from around the world. The API’s Docs: https://themealdb.com/api.php
