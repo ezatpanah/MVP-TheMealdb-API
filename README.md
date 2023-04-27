@@ -8,7 +8,7 @@ This project in
 
 - MVP architecture : Current Repo
 - MVVM architecture : https://github.com/ezatpanah/MVVM-TheMealdb-API [ Room Database - Dagger Hilt - Flow - Coroutine - LiveData]
-- MVI architecture : Coming soon
+- MVI architecture : https://github.com/ezatpanah/MVI-TheMealdb-API
 
 The app was written in Kotlin.
 
